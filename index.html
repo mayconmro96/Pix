@@ -3,72 +3,168 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagamento via Pix</title>
+
+  <title>Oficina do Magrelo | Pix</title>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
       margin: 0;
-      padding: 25px;
-      text-align: center;
+      min-height: 100vh;
+      padding: 25px 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #111111;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
+
     .card {
-      max-width: 420px;
-      margin: 50px auto;
-      background: white;
-      padding: 30px 20px;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,.12);
+      width: 100%;
+      max-width: 430px;
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px 22px;
+      text-align: center;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.35);
     }
-    h1 { margin-bottom: 10px; }
-    p { color: #555; line-height: 1.5; }
+
+    .logo {
+      width: 210px;
+      max-width: 75%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      margin: 5px 0 5px;
+      font-size: 27px;
+      color: #111111;
+      font-weight: 900;
+    }
+
+    .subtitulo {
+      margin: 0 0 25px;
+      font-size: 16px;
+      color: #666666;
+    }
+
+    .pix-box {
+      background: #f5f5f5;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+
+    .pix-titulo {
+      font-size: 21px;
+      font-weight: bold;
+      margin: 0 0 7px;
+      color: #111111;
+    }
+
+    .pix-texto {
+      font-size: 15px;
+      color: #666666;
+      line-height: 1.5;
+      margin: 0;
+    }
+
     button {
       width: 100%;
       padding: 18px;
-      margin-top: 15px;
-      border: 0;
-      border-radius: 12px;
-      background: #00a86b;
-      color: white;
+      border: none;
+      border-radius: 14px;
+      background: #111111;
+      color: #ffffff;
       font-size: 18px;
-      font-weight: bold;
+      font-weight: 800;
       cursor: pointer;
+      transition: transform 0.1s;
     }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
     #status {
-      font-weight: bold;
-      color: #008755;
       min-height: 24px;
+      margin: 14px 0 0;
+      font-size: 16px;
+      font-weight: bold;
+      color: #16894b;
+    }
+
+    .instrucao {
+      margin: 8px 0 0;
+      color: #666666;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .obrigado {
+      margin-top: 25px;
+      padding-top: 18px;
+      border-top: 1px solid #dddddd;
+      font-size: 14px;
+      color: #777777;
     }
   </style>
 </head>
 
 <body>
+
   <div class="card">
-    <h1>💠 Pagar com Pix</h1>
 
-    <p>
-      Toque no botão abaixo para copiar o código Pix.
-    </p>
+    <img
+      src="ED3DD5C1-B49A-4E91-AD7E-F151ED7DF7D6.png"
+      alt="Magrelo"
+      class="logo"
+    >
 
-    <button onclick="copiarPix()">COPIAR PIX</button>
+    <h1>OFICINA DO MAGRELO</h1>
+    <p class="subtitulo">Pagamento rápido e fácil</p>
+
+    <div class="pix-box">
+      <p class="pix-titulo">💠 PAGAMENTO VIA PIX</p>
+      <p class="pix-texto">
+        Toque no botão abaixo para copiar o código Pix.
+      </p>
+    </div>
+
+    <button onclick="copiarPix()">
+      COPIAR PIX
+    </button>
 
     <p id="status"></p>
 
-    <p>
-      Depois abra o aplicativo do seu banco, escolha
-      <strong>Pix → Copia e Cola</strong> e cole o código.
+    <p class="instrucao">
+      Depois, abra o aplicativo do seu banco e escolha
+      <strong>Pix → Copia e Cola</strong>.
     </p>
+
+    <p class="obrigado">
+      🔧 Obrigado pela preferência!
+    </p>
+
   </div>
 
-<script>
-const pix = "00020126330014br.gov.bcb.pix0111771127331205204000053039865802BR5925SIVALDO SANTOS DE OLIVEIR6009ITUMBIARA62070503***6304091B";
+  <script>
+    const pix = "00020126330014br.gov.bcb.pix0111771127331205204000053039865802BR5925SIVALDO SANTOS DE OLIVEIR6009ITUMBIARA62070503***6304091B";
 
-function copiarPix() {
-  navigator.clipboard.writeText(pix).then(function() {
-    document.getElementById("status").innerText = "✓ Pix copiado!";
-  });
-}
-</script>
+    function copiarPix() {
+      navigator.clipboard.writeText(pix).then(function() {
+        document.getElementById("status").innerHTML =
+          "✓ PIX COPIADO! Agora abra seu banco.";
+      }).catch(function() {
+        document.getElementById("status").innerHTML =
+          "Não foi possível copiar. Tente novamente.";
+      });
+    }
+  </script>
 
 </body>
 </html>
