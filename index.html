@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pagamento via Pix</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 25px;
+      text-align: center;
+    }
+    .card {
+      max-width: 420px;
+      margin: 50px auto;
+      background: white;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,.12);
+    }
+    h1 { margin-bottom: 10px; }
+    p { color: #555; line-height: 1.5; }
+    button {
+      width: 100%;
+      padding: 18px;
+      margin-top: 15px;
+      border: 0;
+      border-radius: 12px;
+      background: #00a86b;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    #status {
+      font-weight: bold;
+      color: #008755;
+      min-height: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>💠 Pagar com Pix</h1>
+
+    <p>
+      Toque no botão abaixo para copiar o código Pix.
+    </p>
+
+    <button onclick="copiarPix()">COPIAR PIX</button>
+
+    <p id="status"></p>
+
+    <p>
+      Depois abra o aplicativo do seu banco, escolha
+      <strong>Pix → Copia e Cola</strong> e cole o código.
+    </p>
+  </div>
+
+<script>
+const pix = "00020126330014br.gov.bcb.pix0111771127331205204000053039865802BR5925SIVALDO SANTOS DE OLIVEIR6009ITUMBIARA62070503***6304091B";
+
+function copiarPix() {
+  navigator.clipboard.writeText(pix).then(function() {
+    document.getElementById("status").innerText = "✓ Pix copiado!";
+  });
+}
+</script>
+
+</body>
+</html>
